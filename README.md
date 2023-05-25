@@ -10,7 +10,7 @@
 - Categoria: str
 - Extra: str
 - Fecha: date
-- URL: date
+- URL: str
 - is_publish: boolean[0]
 - Imagen_1: str
 - Imagen_2: str
@@ -24,7 +24,7 @@
 - descripcion: str
 - email: str
 - telefono: str
-- is-mvp: boolean[0]
+- is_admin: bsoolean[0]
 - fecha_nacimiento: date
 
 ### contacto
