@@ -13,7 +13,7 @@
             <h2>Blog</h2>
             <p>Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
 
-            <a class="cta-btn" href="{% url 'index' %}">Available for hire</a>
+            <a class="cta-btn" href="{% url 'contact' %}">Contacto</a>
 
           </div>
         </div>
@@ -23,30 +23,64 @@
     <!-- ======= Gallery Section ======= -->
     <section id="gallery" class="gallery">
       <div class="container-fluid">
-
         <div class="row gy-4 justify-content-center">
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="{% static 'assets/img/gallery/gallery-1.jpg' %}" class="img-fluid" alt="">
-              <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="{% static 'assets/img/gallery/gallery-1.jpg' %}" title="Gallery 1" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                <a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
+          {% if blogs %}
+            {% for blog in blogs %}
+              <div class="col-xl-3 col-lg-4 col-md-6">
+                <div class="gallery-item h-100">
+                  <img src="{{ blog.imagen_1.url }}" class="img-fluid" alt="">
+                  <div class="gallery-links d-flex align-items-center justify-content-center">
+                    <a href="{{ blog.imagen_1.url }}" title="{{ blog.title }}" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                    <a href="{% url 'blog' blog.id %}" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div><!-- End Gallery Item -->
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="gallery-item h-100">
-              <img src="{% static 'assets/img/gallery/gallery-2.jpg' %}" class="img-fluid" alt="">
-              <div class="gallery-links d-flex align-items-center justify-content-center">
-                <a href="{% static 'assets/img/gallery/gallery-2.jpg' %}" title="Gallery 2" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                <a href="gallery-single.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
-              </div>
-            </div>
-        </div>
+
+            {% endfor %}
+          {% else %}
+          <div class="col-md-12">
+            <p>No hay blogs disponibles</p>
+          </div>
+          {% endif %}
 
       </div>
     </section><!-- End Gallery Section -->
+    <nav aria-label="Page navigation example">
+      {% if blogs.has_other_pages %}
+        <ul class="pagination justify-content-center">
+          {% if blogs.has_previous %}
+            <li class="page-item">
+              <a href="?page={{blogs.previous_page_number}}" class="page-link">&laquo;</a>
+            </li>
+          {% else %}
+            <li class="page-item disable">
+              <a class="page-link">&laquo;</a>
+            </li>
+          {% endif %}
 
+          {% for i in blogs.paginator.page_range %}
+            {% if blogs.number == i %}
+              <li class="page-item active">
+                <a class="page-link">{{i}}</a>
+              </li>
+            {% else %}
+              <li class="page-item">
+                <a href="?page={{i}}" class="page-link">{{i}}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+          {% if blogs.has_next %}
+            <li class="page-item">
+              <a href="?page={{blogs.next_page_number}}" class="page-link">&raquo;</a>
+            </li>
+          {% else %}
+            <li class="page-item disable">
+              <a class="page-link">&laquo;</a>
+            </li>
+          {% endif %}
+        </ul>
+      {% endif %}
+    </nav>
   </main><!-- End #main -->
 
 {% endblock %}

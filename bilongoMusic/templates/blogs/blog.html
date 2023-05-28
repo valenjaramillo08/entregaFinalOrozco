@@ -4,6 +4,78 @@
 
 {% block content %}
 
-<h1>blog</h1>
+    <!-- ======= End Page Header ======= -->
+    <div class="page-header d-flex align-items-center">
+        <div class="container position-relative">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 text-center">
+              <h2>Blog</h2>
+              <p>Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
+  
+              <a class="cta-btn" href="{% url 'contact' %}">Contacto</a>
+  
+            </div>
+          </div>
+        </div>
+      </div><!-- End Page Header -->
+  
+      <!-- ======= Gallery Single Section ======= -->
+      <section id="gallery-single" class="gallery-single">
+        <div class="container">
+  
+          <div class="position-relative h-100">
+            <div class="slides-1 portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center">
+  
+                <div class="swiper-slide">
+                  <img src="{{ blog.imagen_1.url }}" alt="">
+                </div>
+                <div class="swiper-slide">
+                  <img src="{{ blog.imagen_2.url }}" alt="">
+                </div>
+                <div class="swiper-slide">
+                  <img src="{{ blog.imagen_3.url }}" alt="">
+                </div>
+                <div class="swiper-slide">
+                  <img src="{{ blog.imagen_4.url }}" alt="">
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+  
+          </div>
+  
+          <div class="row justify-content-between gy-4 mt-4">
+  
+            <div class="col-lg-8">
+              <div class="portfolio-description">
+                <h2>{{ blog.title }}</h2>
+                <p>
+                    {{ blog.texto}}
+                </p>
+
+              </div>
+            </div>
+  
+            <div class="col-lg-3">
+              <div class="portfolio-info">
+                <h3>Mas informacion</h3>
+                <ul>
+                  <li><strong>Categoria</strong> <span>{{ blog.categoria }}</span></li>
+                  <li><strong>Extra</strong> <span>{{ blog.extra }}</span></li>
+                  <li><strong>Fecha del articulo</strong> <span>{{ blog.fecha }}</span></li>
+                  <li><strong>URL</strong> <a href="#">{{ blog.url }}</a></li>
+                  <li><a href="{{ blog.url }}" class="btn-visit align-self-start">Visit Website</a></li>
+                </ul>
+              </div>
+            </div>
+  
+          </div>
+  
+        </div>
+      </section><!-- End Gallery Single Section -->
+  
 
 {% endblock %}

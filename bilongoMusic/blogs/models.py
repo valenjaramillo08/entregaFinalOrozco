@@ -6,9 +6,9 @@ from writers.models import Writer
 class Blog(models.Model):
     writer = models.ForeignKey(Writer, on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=254)
-    texto = models.CharField(max_length=254)
+    texto = models.CharField(blank=True)
     categoria = models.CharField(max_length=254)
-    extra = models.CharField(blank=True)
+    extra = models.CharField(max_length=254)
     fecha = models.DateTimeField(default=datetime.now(), blank=True)
     url = models.CharField(max_length=254)
     is_publish = models.BooleanField(default=True)
