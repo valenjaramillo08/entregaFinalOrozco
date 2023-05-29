@@ -1,10 +1,18 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 
 # Create your views here.
 def register(request):
     if request.method == 'POST':
-        # registro de usuarios
-        pass
+
+        password = request.POST['password']
+        password2 = request.POST['password2']
+
+        if password == password2:
+            return
+        else:
+            messages.error(request, 'Password no hace match')
+            return redirect('register')
     else:
         return render(request, 'accounts/register.html')
 def login(request):

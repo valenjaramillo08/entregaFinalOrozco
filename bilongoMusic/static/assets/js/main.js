@@ -172,3 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+
+setTimeout(function(){
+  $('message').fadeOut('slow');
+}, 3000);
